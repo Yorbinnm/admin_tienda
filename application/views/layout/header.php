@@ -124,101 +124,14 @@
                  segundos = 0;
                     intervalo = 0;
                 $(document).ready(function () {
-                    window.onload = show5();
-                   
-                    cargar();
-                    seMovio();
-
+               
                 });
 
 
-                seMovio();
+       
 
 
-                $(":input").unbind('click').keyup(function () {
-                    seMovio();
-                });
+              
 
-
-                $(document).click(function (event) {
-                    seMovio();
-                });
-
-
-                function seMovio() {
-                    segundos = 0;
-                    clearInterval(intervalo);
-                    intervalo = setInterval(cantidadSegundos, 1000);
-                }
-                function cantidadSegundos() {
-                    segundos++;
-                    
-
-                    if (segundos == 15) {
-                        clearInterval(intervalo);
-                        seMovio();
-                        cargar();
-                    }
-                }
-                $(document).ready(function () {
-                    $('.btnPerfil').unbind('click').click(function () {
-                        window.location.href = '<?php echo base_url() ?>cPerfil';
-                    });
-
-                });
-
-                function show5() {
-                    if (!document.layers && !document.all && !document.getElementById)
-                        return
-
-                    var Digital = new Date()
-                    var hours = Digital.getHours()
-                    var minutes = Digital.getMinutes()
-                    var seconds = Digital.getSeconds()
-
-                    var dn = "P.M."
-                    if (hours < 12)
-                        dn = "A.M."
-
-                    if (hours > 12)
-                        hours = hours - 12
-                    if ((hours >= 1) && (hours <= 9))
-                        hours = '0' + hours
-
-                    if (hours == 0)
-                        hours = 12
-
-                    if (minutes <= 9)
-                        minutes = "0" + minutes
-                    if (seconds <= 9)
-                        seconds = "0" + seconds
-                    //change font size here to your desire
-                    myclock = "<font size='5' face='Arial'><b>" + hours + ":" + minutes + ":"
-                            + seconds + " " + dn + "</b></font>"
-                    if (document.layers) {
-                        document.layers.liveclock.document.write(myclock)
-                        document.layers.liveclock.document.close()
-                    } else if (document.all)
-                        liveclock.innerHTML = myclock
-                    else if (document.getElementById)
-                        document.getElementById("liveclock").innerHTML = myclock
-                    setTimeout("show5()", 1000)
-                }
-
-
-
-                function cargar() {
-                    $.post('<?php echo base_url(); ?>cCaja/refrescarNotificacion', {
-                    },
-                            function (data) {
-                                if (data.codigo == 200) {
-
-                                    $('.not').html(data.contenido);
-
-                                } else {
-                                    alert('Error');
-                                }
-                            }, "json");
-                }
 
             </script>
