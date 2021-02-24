@@ -155,7 +155,7 @@
             <div class="modal-header " >
                 <button type="button" class="close text-md" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title  "><b>IMAGENES</b></h4>
+                <h4 class="modal-title  "><b>PICTURE</b></h4>
             </div>
             <div class="modal-body">
             <div class="box-body "  >
@@ -404,13 +404,13 @@
                             $.each(data.datos, function (indice, registros) {
      $("#tabla tbody ").append(
              ' <tr data-id="'+registros.ProductoId+'"" class="linkhover editar" >'+
-               ' <td class="text-center">'+'<span data-img="'+registros.imagen+'"  class=" imagen  fa fa-search-plus  bg-red-actives" style="font-size:25px"></span>'+'</td>'+
+               ' <td class="text-center">'+'<span data-img="'+registros.imagen1+'"  class=" imagen  fa fa-search-plus  bg-red-actives" style="font-size:25px"></span>'+'</td>'+
                ' <td>'+registros.NombreProducto+'</td>'+
             ' <td>'+registros.Categoria+'</td>'+
             ' <td>'+registros.sub_categoria+'</td>'+
                ' <td>'+'<span class="'+registros.Clase+'">'+registros.Estatus+'</span></td>'+
                ' <td>'+registros.Precio+'</td>'+
-                   ' <td><p >'+registros.peso+'</p></td>'+
+                   ' <td><p >'+registros.peso+' G</p></td>'+
             '</tr>'
 
             );
@@ -599,20 +599,7 @@ $("#selectcategoria_sub_categoria").append('<option value="'+registros.Categoria
         //Botón para agragar un nuevo gasto
         $(".btnNuevo").unbind('click').click(function () {
             Estado = 'Nuevo';
-            $("#nombre").val('');
-            $("#duracion").val('');
-            $("#precio").val('');
-            //  $('#selecEstatus> option[value="33"]').attr('selected', 'selected');
-
-            $("#cocina").val(0);
-            $("#selecEstatus").val("Seleccione");
-
-            $("#peso").val('');
-            $("#stock").val('');
-               $("#input_file").val('');
-              $("#descripcion").val('');
-            $("#selectcategoria").val("Seleccione");
-             $("#selectcategoria").change();
+            limpia_productos();
            // $("#Modal_Producto").modal("show");
               $("#panel_principal").hide('slow');
             $("#panel_editar").slideDown(2000);
@@ -630,7 +617,16 @@ $("#selectcategoria_sub_categoria").append('<option value="'+registros.Categoria
             $("#stock").val('');
              $("#input_file").val('');
             $("#descripcion").val('');
+              $("#input_file").val('');
+              $("#input_file2").val('');
+              $("#input_file3").val('');
+              $("#input_file4").val('');
             $("#selectcategoria").val("Seleccione");
+            $(".previos").html("");
+            $('.tab_incidencias_ct_modal_aplica_incidencia_botones_archivos_input').val('');
+        
+            $(".file").val('');
+            
              $("#selectcategoria").change();
         }
 
@@ -745,7 +741,115 @@ $("#selectcategoria_sub_categoria").append('<option value="'+registros.Categoria
             }
         });
 
+   $(".btnGuardar").unbind('click').click(function () {
+            if ( ($("#selectstatus").val() != 'Seleccione') && ($("#selectcategoria").val() != 'Seleccione') && ($("#nombre").val() != "")  && ($("#precio").val() != "") && ($("#select_sub_categoria").val() != "0")) {
+                if (Estado == 'Nuevo') {
 
+           var formData = new FormData();
+      jQuery.each(jQuery('#input_file')[0].files, function(i, file) {
+   // data.append('file-'+i, file);
+        formData.append('input_file[]', file);
+             });
+
+
+
+      jQuery.each(jQuery('#input_file2')[0].files, function(i, file) {
+   // data.append('file-'+i, file);
+        formData.append('input_file2[]', file);
+             });
+
+      jQuery.each(jQuery('#input_file3')[0].files, function(i, file) {
+   // data.append('file-'+i, file);
+        formData.append('input_file3[]', file);
+             });
+
+      jQuery.each(jQuery('#input_file4')[0].files, function(i, file) {
+   // data.append('file-'+i, file);
+        formData.append('input_file4[]', file);
+             });
+
+
+          formData.append('SucursalId', $('#SucursalId').val());
+          formData.append('NombreProducto', $('#nombre').val());
+          formData.append('Descripcion', $('#descripcion').val());
+
+          formData.append('precio', $('#precio').val());
+          formData.append('peso', $('#peso').val());         
+          formData.append('EstatusId', $('#selectstatus').val());         
+          formData.append('categoriaId', $('#selectcategoria').val());                
+          formData.append('sub_categoria_id', $('#select_sub_categoria').val());  
+          formData.append('unidad_id', $('#unidades').val());  
+          formData.append('stock', $('#stock').val());        
+                        
+
+
+   $.ajax({
+                url: "<?php echo base_url(); ?>"+'/product/guardar_producto',
+                type: 'POST',
+                dataType: "json",
+                data: formData,
+                success: function (data) {
+                  if (data.codigo == 200) {
+                                    swal("Producto guardado correctamente", {
+                                        icon: "success",
+                                         timer: 1000
+                                    })
+                       consulta_productos();
+                     limpia_productos();
+                }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+
+
+
+
+
+
+
+
+
+                } else {
+
+                    //Actualizar Información de gastos
+                    $.post('product/actualizar', {
+                        nombre: $("#nombre").val(),
+                        descripcion: $('#descripcion').val(),
+                        duracion: $('#duracion').val(),
+                        precio: $("#precio").val(),
+                        estatus: $("#selectstatus").val(),
+                        categoria: $("#selectcategoria").val(),
+                        productoId: ProductoId,
+                       cocina: $("#cocina").val()
+                    },
+                            function (data) {
+                                if (data.codigo == 200) {
+                                    $("#Modal_Producto").modal("hide");
+//                                    UlProducto();
+                                    swal({
+                                        icon: "success", //info->advertencia, error->error,warning->advertencia y success->ok
+                                        title: "Exitoso",
+                                        text: "Elemento Actualizado correctamente",
+                                        timer: 800
+
+                                    }).then(function () {
+                                        window.location.href = '<?php echo base_url() ?>product';
+                                    });
+//                                    recargar()
+                                } else {
+                                    alert('Error al actualizar');
+                                }
+
+                            }, "json");
+                }
+            } else {
+                alert('No deje espacios vacios');
+            }
+        });
 
          $(".btnGuardar_sub_categoria").unbind('click').click(function () {
             if (($("#sub_categoria").val() != "") || ($("#Estatus_sub_categoria").val() != "0") ) {
@@ -814,104 +918,8 @@ $("#selectcategoria_sub_categoria").append('<option value="'+registros.Categoria
                 alert('No deje espacios vacios');
             }
         });
-        $(".btnGuardar").unbind('click').click(function () {
-            if ( ($("#selectstatus").val() != 'Seleccione') && ($("#selectcategoria").val() != 'Seleccione') && ($("#nombre").val() != "")  && ($("#precio").val() != "") && ($("#select_sub_categoria").val() != "0")) {
-                if (Estado == 'Nuevo') {
-
-
-
-                     var formData = new FormData();
-
-             jQuery.each(jQuery('#input_file')[0].files, function(i, file) {
-   // data.append('file-'+i, file);
-        formData.append('input_file[]', file);
-             });
-
-     formData.append('SucursalId', $('#SucursalId').val());
- formData.append('nombre', $('#nombre').val());
- formData.append('descripcion', $('#descripcion').val());
-
-     formData.append('precio', $('#precio').val());
-        formData.append('peso', $('#peso').val());         
-          formData.append('estatus', $('#selectstatus').val());         
-              formData.append('categoria', $('#selectcategoria').val());                
-                     formData.append('sub_categoria', $('#select_sub_categoria').val());  
-               
-                        
-
-
-   $.ajax({
-                url: "<?php echo base_url(); ?>"+'/product/guardar2',
-                type: 'POST',
-                dataType: "json",
-                data: formData,
-                success: function (data) {
-                  if (data.codigo == 200) {
-                                    swal("Producto guardado correctamente", {
-                                        icon: "success",
-                                         timer: 1000
-                                    })
-                       consulta_productos();
-                     limpia_productos();
-                }
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-
-
-
-
-
-
-
-
-
-
-
-                } else {
-
-                    //Actualizar Información de gastos
-                    $.post('product/actualizar', {
-                        nombre: $("#nombre").val(),
-                        descripcion: $('#descripcion').val(),
-                        duracion: $('#duracion').val(),
-                        precio: $("#precio").val(),
-                        estatus: $("#selectstatus").val(),
-                        categoria: $("#selectcategoria").val(),
-                        productoId: ProductoId,
-                       cocina: $("#cocina").val()
-                    },
-                            function (data) {
-                                if (data.codigo == 200) {
-                                    $("#Modal_Producto").modal("hide");
-//                                    UlProducto();
-                                    swal({
-                                        icon: "success", //info->advertencia, error->error,warning->advertencia y success->ok
-                                        title: "Exitoso",
-                                        text: "Elemento Actualizado correctamente",
-                                        timer: 800
-
-                                    }).then(function () {
-                                        window.location.href = '<?php echo base_url() ?>product';
-                                    });
-//                                    recargar()
-                                } else {
-                                    alert('Error al actualizar');
-                                }
-
-                            }, "json");
-                }
-            } else {
-                alert('No deje espacios vacios');
-            }
-        });
-
-    });
-
-
-    
+       
+       });
 
 
  $("#selectcategoria").unbind('change').change(function () {

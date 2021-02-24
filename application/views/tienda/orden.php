@@ -7,7 +7,7 @@
       <!-- title row -->
       <div class="row ">
         <div class="col-xs-12 bg-light-blue-gradient " >
-          <h5 class="page-header ">  DELIVERY DRIVER
+          <h5 class="page-header ">  ORDERS
           
           </h5>
 
@@ -16,50 +16,42 @@
     
 <br>
 <ul class="nav nav-tabs">
-              <li class="active select_tab " data-hijo='area_productos' id="tab_productos">
-                <a href="#tab_1" data-toggle="tab" aria-expanded="true" > <i class="fa fa-fw fa-users"></i> DELIVERY DRIVER
+              <li class="active select_tab " data-hijo='area_pendientes' id="tab_productos">
+                <a href="#tab_1" data-toggle="tab" aria-expanded="true" > <i class="fa fa-hourglass-o  text-muted"></i> PENDING
 </a>
               </li>
               <li class="select_tab "   data-hijo='area_categorias' id="tab_categoria">
-                <a href="#tab_2" data-toggle="tab" aria-expanded="false" ><span class="fa  fa-map-marker"></span> ROUTES</a>
+                <a href="#tab_2" data-toggle="tab" aria-expanded="false" ><span class="fa  fa-hourglass-1"></span> IN PROGRESS</a>
+              </li>
+            <li class="select_tab "   data-hijo='area_categorias' id="tab_categoria">
+                <a href="#tab_2" data-toggle="tab" aria-expanded="false" ><span class="fa  fa-hourglass"></span> DELIVERED</a>
               </li>
           
-              <li class="dropdown pull-right">
-                <a class="dropdown-toggle  btn btn-block btn-primary" data-toggle="dropdown" href="#" aria-expanded="false">
-                <i class="glyphicon glyphicon-align-center"></i>  <b> ADD
-
-</b>
-                </a>
-                <ul class="dropdown-menu" style="cursor: pointer;">
-                  <li class="btn_repartidor"><a role="menuitem" tabindex="-1" >
-                   <i class="fa fa-fw fa-users "></i>  DELIVERY DRIVER</a></li>
-                  <li class="bnt_rutas"><a role="menuitem" tabindex="-1" ><span class="fa  fa-map-marker"></span> ROUTES</a></li>
              
-                 
-                 
-                </ul>
-              </li>
-             
+              
 
 
       </ul>
 
    
-      <div class="row areas" id="area_productos" >
+      <div class="row areas" id="area_pendientes" >
         <div class="col-xs-12 table-responsives">
 
          <br>       <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-fw fa-search"></i> SEARCH</span>
-                <input type="text" class="form-control" id="input_buscar_repartidor" placeholder="SEARCH DELIVERY DRIVER">
+                <input type="text" class="form-control" id="input_pendientes" placeholder="SEARCH PENDING">
               </div>
               <br>
           <table class="table  table-hover text-center dataTable text-md r" id="tabla" >
             <thead>
             <tr>
-              <th>NAME</th>
-              <th>LAST NAME</th>
-             <th>PHONE</th>
-               <th>STATUS</th>
+              <th style="width:15%">ORDER </th>
+                <th style="width:15%">DATE OF THE ORDER</th>
+              <th style="width:15%">CUSTOMER NAME</th>
+         
+             
+             <th>ADDRESS</th>
+              
             </tr>
             </thead>
             <tbody id="cuerpo_tabla_repartidor" style="cursor: pointer;">
@@ -75,34 +67,33 @@
      <div class="col-xs-12 "><br>
           <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-fw fa-search"></i> SEARCH</span>
-                <input type="text" class="form-control" id="input_buscar_ruta" placeholder="SEARCH ROUTES">
+                <input type="text" class="form-control" id="input_proceso" placeholder="SEARCH IN PROGRESS">
               </div>
               <br>
      </div>
 
    <div class="col-xs-12 col-md-12">
 
-        <div class="col-xs-12 table-responsive pull-center">
 
-       
-          <table class="table table- text-sm pull-center" id="tabla_rutas">
-            <thead>
+       <table class="table  table-hover text-center dataTable text-md r" id="tabla" >
+          <thead>
             <tr>
-           
-              <th style="width:40%">CP</th>
-                <th style="width:55%">CITY</th>
-              <th style="width:5%">STATUS</th>
-           
+              <th style="width:15%">ORDER </th>
+                <th style="width:15%">DATE OF THE ORDER</th>
+              <th style="width:15%">CUSTOMER NAME</th>
+         
+             
+             <th>ADDRESS</th>
+              
             </tr>
             </thead>
-            <tbody id="cuerpo_tabla_rutas" style="cursor: pointer;">
+            <tbody id="cuerpo_tabla_pr" style="cursor: pointer;">
            
            
             </tbody>
           </table>
         </div>
 
- </div>
       </div>
 
    
@@ -113,7 +104,7 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-edit " id="titulo_panel"> DELIVERY DRIVER</i> 
+            <i class="fa fa-edit " id="titulo_panel"> ASSIGN ORDER</i> 
         <i class="fa fa-close fa-lg pull-right " style="color: #FF000sss0;" id="cerrar_panel_editar"></i>
         </div>
 
@@ -124,55 +115,53 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3">
+    <div class="col-sm-5"> 
 
-          <!-- Profile Image -->
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url(); ?>assets/dist/img/user1-128x128.jpg" alt="User profile picture">
+        <div class="box-body">
 
-              <h3 class="profile-username text-center" id="nombre_repartidor_editar">Nina Mcintire</h3>
+                  <strong class="text-lg"><i class="fa fa-book fa-2x margin-r-5"></i> ORDER</strong>
 
-              <p class="text-muted text-center" id="otros_datos_editar" >Software Engineer</p>
+                  <p class="text-muted" id="generales">
+                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                  </p>
+
+                  <hr>
+
+                  <strong><i class="   fa fa-location-arrow  fa-2x margin-r-5"></i> LOCATION</strong>
+
+                  <p class="text-muted" id="local">Malibu, California</p>
+
+                  <hr>
 
 
-              <a href="#" class="btn btn-primary btn-block"><b> EDIT</b></a>
-                <a href="#" class="btn btn-primary btn-danger btn-block" id="btn_nueva_ruta"><b>ADD ROUTE</b></a>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-     
-        </div>
-        <!-- /.col -->
-        <div class="col-md-9">
+               
+         </div>
       
-              <div class="box box-success" id="activity">
-                 <div class="col-xs-12 table-responsive">
-          <table class="table table-stripeds" id="rutas_repartidor">
+
+      </div>
+
+        <div class="col-sm-7"> 
+
+        <div class="box-body">
+        <strong class="text-lg"><i class="fa fa-users fa-2x margin-r-5"></i> ASSIGN DELIVERY DRIVER</strong>
+                 <table class="table table- text-sm pull-center" id="responsables">
             <thead>
-            <tr >
-              
+            <tr>
+          
            
-              <th style="width:40%">CODIGO POSTAL</th>
-              <th style="width:60%" > City</th>
-            
             </tr>
             </thead>
-            <tbody>
-        
+            <tbody id="cuerpo_responsables" style="cursor: pointer;">
+           
+           
             </tbody>
           </table>
-        </div>
-            
-              </div>
-              <!-- /.tab-pane -->
-     
 
-            
-           
-        <!-- /.col -->
+
+               
+         </div>
+      
+
       </div>
 
 
@@ -184,8 +173,8 @@
           <a href="invoice-print.html" target="_blank" class="btn btn-default hidden" ><i class="fa fa-print"></i> Print</a>
           <button type="button" class="btn btn-success pull-right hidden"><i class="fa fa-credit-card"></i> Submit Payment
           </button>
-          <button type="button" class="btn btn-primary pull-right hidden" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
+          <button type="button" class="btn btn-primary pull-right asignar" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> ASSIGN
           </button>
         </div>
       </div>
@@ -260,53 +249,7 @@
 
 </div>
 
-<div class="modal modal-default fade" id="modal_rutas">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header " style=" background-color: lightblue; ">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><a class="fa fa-fw fa-cogs" style="color:black"></a><strong> ROUTES</strong></h4>
-            </div>
-            <div class="modal-body">
-                <form action="" method="POST" class="form-horizontal">
-                    <div class="box box-info">
-                        <div class="box-body">
-                           
 
-                      <div class="form-group col-sm-12">
-                          <label for="exampleInputEmail1">CODIGO POSTAL</label>
-                       <input type="text" id="cp_ruta" class="form-control"  placeholder="CODIGO POSTAL">
-                    </div>                         
-                      
-
-                        <div class="form-group col-sm-12">
-                          <label for="exampleInputEmail1">STATUS</label>
-                       
-                           
-                              <select type="text" id="estatus_ruta" class="form-control">
-                                <option value="0">Seleccione</option>
-                                  <option value="1">Activo</option>
-                                  <option value="2">Inactivo</option>
-                              </select>
-                                
-                    </div>  
-                         
-                    <div class="form-group col-sm-12">
-                  <label for="exampleInputEmail1">CITY</label>
-                    <textarea  id="descripcion_ruta" class="form-control" rows="3" placeholder="CITY"></textarea>
-                </div>
-                        </div>
-                    </div>
-                </form>               
-            </div>
-            <div class="modal-footer">                    
-                <button type="button" class="btn_guarda_ruta btn btn-sm btn-primary"><i class="fa fa-save"></i> Guardar</button>
-                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal modal-default fade" id="modal_rutas_repartidor">
     <div class="modal-dialog">
@@ -321,7 +264,8 @@
                     <div class="box box-info">
                         <div class="box-body">
                            
-              <input type="text" id="id_repartidor" class="form-control hidden"  >
+              <input type="text" id="id_orden" class="form-control hidden"  >
+                  <input type="text" id="id_repartidor" class="form-control hidden"  >
                                            
                       
 
@@ -430,23 +374,26 @@
 
 
 
-        function consulta_repartidor() {
+        function consulta_pendientes() {
            $("#tabla").dataTable().fnDestroy();
 
-            $.post('ctr_delivery/consulta_repartidor', {
-                criterio: $('#input_buscar_repartidor').val()
+            $.post('ctr_orden/consulta_pendientes', {
+                criterio: $('#input_pendientes').val()
             },
                     function (data) {
                         if (data.codigo == 200) {
                       $("#tabla tbody  ").html('');  
                             $.each(data.datos, function (indice, registros) {
      $("#tabla tbody ").append(
-             ' <tr data-id="'+registros.repartidor_id+'"" class="linkhover editar" >'+
+             ' <tr data-id="'+registros.orden_id+'"" class="linkhover editarS" >'+
          
-               ' <td>'+registros.nombre+'</td>'+
-            ' <td>'+registros.apellidos+'</td>'+
-            ' <td>'+registros.telefono+'</td>'+
-               ' <td>'+'<span class="label label-success">'+'activo'+'</span></td>'+
+               ' <td class="text-info"><b>'+registros.numero_orden_externo+'</b></td>'+
+                 ' <td>'+registros.fecha+'</td>'+
+         
+             ' <td>'+registros.nombre_cliente+'</td>'+
+          
+            ' <td>'+registros.direccion+'</td>'+
+              
          
             '</tr>'
 
@@ -474,44 +421,117 @@
         });
 
         }
-    $('#tabla tbody ').on('click', 'tr ', function() {
- 
-  $("#panel_principal").hide('slow');
-  $("#panel_editar").show('slow');
-  //alert($(this).data('id'));
-  $('#id_repartidor').val($(this).data('id'));
-  consulta_datos_repartidor();
-
-});
 
 
-    function consulta_datos_repartidor(){
-               $("#rutas_repartidor").dataTable().fnDestroy();
 
-            $.post('ctr_delivery/consulta_datos_repartidor', {
-                criterio: $('#id_repartidor').val()
+        function consulta_procesos() {
+           $("#tabla_proceso").dataTable().fnDestroy();
+
+            $.post('ctr_orden/consulta_proceso', {
+                criterio: $('#input_proceso').val()
             },
                     function (data) {
                         if (data.codigo == 200) {
-                      $("#rutas_repartidor tbody  ").html('');  
-                            $.each(data.datos_rutas, function (indice, registros) {
-     $("#rutas_repartidor tbody ").append(
-       ' <tr data-id="'+registros.ruta_id+'"" class="linkhover editar" >'+
-             ' <td>'+registros.cp+'</td>'+
-               ' <td>'+registros.descripcion+'</td>'+
-              '</tr>'
+                      $("#tabla_proceso tbody  ").html('');  
+                            $.each(data.datos, function (indice, registros) {
+     $("#tabla_proceso tbody ").append(
+           ' <tr data-id="'+registros.orden_id+'"" class="linkhover editarS" >'+
+         
+               ' <td class="text-info"><b>'+registros.numero_orden_externo+'</b></td>'+
+                 ' <td>'+registros.fecha+'</td>'+
+         
+             ' <td>'+registros.nombre_cliente+'</td>'+
+          
+            ' <td>'+registros.direccion+'</td>'+
+              
+         
+            '</tr>'
+
             );
 
 
                             });
 
 
+                       
+                        }
+                    }, "json");
+
+
+    $("#tabla_proceso").DataTable({
+           
+            "pageLength": 1,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": false,
+            "info": false,
+            "autoWidth": true,
+
+       
+        });
+
+        }
+    $('#tabla tbody ').on('click', 'tr ', function() {
+ 
+  $("#panel_principal").hide('slow');
+  $("#panel_editar").show('slow');
+  //alert($(this).data('id'));
+  $('#id_orden').val($(this).data('id'));
+  consulta_datos_orden();
+
+});
+
+
+    function consulta_datos_orden(){
+               $("#rutas_repartidor").dataTable().fnDestroy();
+
+            $.post('ctr_orden/consulta_datos_orden', {
+                criterio: $('#id_orden').val()
+            },
+                    function (data) {
+                        if (data.codigo == 200) {
+
+                       $("#responsables tbody  ").html('');  
+                            $.each(data.datos_repartidores, function (indice, registros) {
+     $("#responsables tbody ").append(
+             ' <tr data-id="'+registros.repartidor_id+'"" class="linkhover editar" >'+
+         
+               ' <td>'+
+             '<div class="checkbox">'+
+                 ' <label>'+
+                    '<input type="checkbox" class="select" data-id="'+registros.repartidor_id+'"" > '+registros.nombre+' '+registros.apellidos+ ' | '+registros.descripcion+
+                 ' </label>'+
+               ' </div>'+
+
+
+               '</td>'+
+            ' <td class="pull-left">' +'|'+'</td>'+
+          
+         
+            '</tr>'
+
+            );
+
+
+                            });
+
              $.each(data.datos_generales, function (indice, registros) {
-     $("#nombre_repartidor_editar").html(registros.nombre +' '+registros.apellidos
-       );
-         $("#descripcion_modal").html(registros.nombre +' '+registros.apellidos
-       );
-     $("#otros_datos_editar").html(registros.telefono+' '  );
+     $("#generales").html('<i class="fa fa-fw fa-user fa-lg"></i><b> CUSTOMER NAME: </b>'+registros.nombre_cliente  +'<br>'+
+'     &nbsp;&nbsp;<i class="ion ion-clipboard  fa-lg "></i> <b> NO.ORDER </b> '+'<span class="">'+registros.numero_orden_externo+'</span>'  
+
+
+
+         );
+
+       $("#local").html('<i class="fa fa-fw fa-street-view fa-lg"></i> <b> ADDRESS:</b>'+registros.direccion  +'<br>'+
+'&nbsp;&nbsp;<i class="fa fa-map-marker fa-lg  fa-lg "></i> '+'<span class=""> <b> ROUTE:</b> '+'('+registros.cp+')' +registros.cuidad+'</span>'  
+
+
+
+         );
+     //    $("#descripcion_modal").html(registros.nombre +' '+registros.apellidos
+    //   );
+     //$("#otros_datos_editar").html(registros.telefono+' '  );
 
 
 
@@ -527,22 +547,21 @@
                     }, "json");
 
 
-    $("#rutas_repartidor").DataTable({
-           
-            "pageLength": 1,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": false,
-            "info": false,
-            "autoWidth": true,
-
-       
-        });
+  
 
         }
     
+   $('#responsables').on('click', 'input.select ', function() {
+      id=$(this).data('id');
+      $('input.select').filter(':checkbox').prop('checked',false);
+      $(this).prop('checked',true);
 
-         
+
+
+});
+       
+
+
 $('#cerrar_panel_editar ').on('click', function() {
  
    $("#panel_editar").hide('slow');
@@ -551,47 +570,7 @@ $('#cerrar_panel_editar ').on('click', function() {
 });
 
 
-            function consulta_rutas() {
-           $("#tabla_rutas").dataTable().fnDestroy();
-
-            $.post('ctr_delivery/consulta_rutas', {
-                criterio: $('#input_buscar_ruta').val()
-            },
-                    function (data) {
-                        if (data.codigo == 200) {
-                      $("#tabla_rutas tbody  ").html('');  
-                            $.each(data.datos, function (indice, registros) {
-     $("#tabla_rutas tbody ").append(
-       ' <tr data-id="'+registros.ruta_id+'"" class="linkhover editar" >'+
-             ' <td>'+registros.cp+'</td>'+
-               ' <td>'+registros.descripcion+'</td>'+
      
-               ' <td>'+'<span class="label label-success">'+'activo'+'</span></td>'+
-              '</tr>'
-            );
-
-
-                            });
-
-
-                       
-                        }
-                    }, "json");
-
-
-    $("#tabla_rutas").DataTable({
-           
-            "pageLength": 1,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": false,
-            "info": false,
-            "autoWidth": true,
-
-       
-        });
-
-        }
 
 
             function obtiene_rutas() {
@@ -625,21 +604,21 @@ $('#cerrar_panel_editar ').on('click', function() {
 
 
     //funciones de llenado
-        consulta_repartidor();
-       consulta_rutas();
-       obtiene_rutas();
+        consulta_pendientes();
+       consulta_procesos();
+     //  obtiene_rutas();
      
            //Buscar Categoria. XD
-        $('#input_buscar_repartidor').keyup(function () {
+        $('#input_pendientes').keyup(function () {
 
-          consulta_repartidor();
+          consulta_pendientes();
         });
 
 
 
-        $('#input_buscar_ruta').keyup(function () {
+        $('#input_proceso').keyup(function () {
 
-          consulta_rutas();
+          consulta_procesos();
         });
 
 
@@ -703,18 +682,18 @@ $('#cerrar_panel_editar ').on('click', function() {
             }
         }
 
-  $(".btn_guarda_ruta_repartidor").unbind('click').click(function () {
+  $(".asignar").unbind('click').click(function () {
           
-                if (Estado == 'Nuevo') {
+          
                var formData = new FormData();
 
          // formData.append('SucursalId', $('#SucursalId').val());
-          formData.append('ruta_id', $('#select_ruta').val());
-          formData.append('repartidor_id', $('#id_repartidor').val());
+          formData.append('orden_id', $('#id_orden').val());
+          formData.append('repartidor_id', $('#repartidor_id').val());
                 
                
             $.ajax({
-                url: "<?php echo base_url(); ?>"+'/ctr_delivery/guarda_ruta_repartidor',
+                url: "<?php echo base_url(); ?>"+'/ctr_orden/asigna_repartidor',
                 type: 'POST',
                 dataType: "json",
                 data: formData,
@@ -724,14 +703,19 @@ $('#cerrar_panel_editar ').on('click', function() {
                                         icon: "success",
                                          timer: 1000
                                     })
-                   consulta_datos_repartidor();
+
+                           $("#panel_editar").hide('slow');
+  $("#panel_principal").show('slow');   
+   consulta_procesos();         
+                       consulta_pendientes();
+      
                 }
                 },
                 cache: false,
                 contentType: false,
                 processData: false
             });
-                } 
+           
              
             
         });

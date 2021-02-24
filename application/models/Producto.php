@@ -6,7 +6,7 @@ class Producto extends CI_Model {
     private $categorias = array();
 
     public function getProductos($SucursalId,$criterio="") {
-    $this->db->select(' categoria.CategoriaId,categoria.Descripcion as Categoria,ProductoId,productos.NombreProducto,productos.Precio,productos.EstatusId,productos.SucursalId,productos.Descripcion,estatus.Descripcion as Estatus,estatus.Clase,imagen,peso,sub_categoria');
+    $this->db->select(' categoria.CategoriaId,categoria.Descripcion as Categoria,ProductoId,productos.NombreProducto,productos.Precio,productos.EstatusId,productos.SucursalId,productos.Descripcion,estatus.Descripcion as Estatus,estatus.Clase,imagen1,imagen2,imagen3,imagen4,peso,sub_categoria');
                         $this->db->join('categoria', 'categoria.CategoriaId = productos.CategoriaId', 'inner');
                          $this->db->join('estatus', 'estatus.EstatusId = productos.EstatusId', 'inner');
                           $this->db->join('sub_categoria', 'sub_categoria.sub_categoria_id = productos.sub_categoria_id

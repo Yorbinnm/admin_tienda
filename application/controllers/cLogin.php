@@ -19,7 +19,7 @@ class cLogin extends CI_Controller {
             if (isset($info['s_UsuarioId']) && $info['s_UsuarioId'] = !"") {
                 redirect(base_url() . 'cBienvenida');
             } else {
-                $this->load->view('lemuria/vLogin', $data);
+                $this->load->view('general/vLogin', $data);
             }
         }
     }

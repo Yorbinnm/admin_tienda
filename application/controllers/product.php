@@ -20,26 +20,19 @@ class product extends CI_Controller {
         }
 
 //Cargar el modelo de la clase
+     $this->load->model('sentencias_genericas');
         $this->load->model('Producto');
     }
 
     function index() {
-        //Convertir objetos a array
-        $data['Producto'] = json_decode(json_encode($this->Producto->getProductos($this->user['user']['s_SucursalId'])), true);
-        $data['resumen']=array();
-        foreach ($data['Producto'] as $key => $value) {
-           $data['resumen'][$value['CategoriaId']]=array(
-            'descripcion'=>$value['Categoria'],
-            'total'=>$value['Total_categoria']
-           );
-        }
+     $data=array();
         
-        $data['Categorias'] = $this->Producto->getCategorias($this->user['user']['s_SucursalId']);
+        $catalogo['unidades'] = $this->sentencias_genericas->select_catalogo('unidad');
         
 
         $this->load->view('layout/header', $this->user);
         $this->load->view('layout/menu', $this->modulos);
-        $this->load->view('tienda/productos/panel_edit', $data);
+        $this->load->view('tienda/productos/panel_edit',  $catalogo);
         $this->load->view('tienda/productos/productos', $data);
         $this->load->view('layout/footer');
     }
@@ -134,45 +127,80 @@ class product extends CI_Controller {
         return $resultados;
     }
 
-     function guardar2() {
-       
-   
+    
 
-   $Num_Archivo = count($_FILES["input_file"]['name']);
+
+
+    function guardar_producto(){
+
+          $campos = $_POST;
+       $archivos1 = count($_FILES["input_file"]['name']);
   ///   print_r($_FILES);  
-   for ($i = 0; $i < $Num_Archivo; $i++) {
+   for ($i = 0; $i < $archivos1; $i++) {
     $imagen=$this->uid().'_'.$_FILES["input_file"]['name'][$i];
       $rutadestino =$_SERVER["DOCUMENT_ROOT"].'/admin/assets/dist/productos/'.$imagen;
   
 
     if(!@copy($_FILES["input_file"]['tmp_name'][$i], $rutadestino)) {
         $errors = error_get_last();
+
         print_r($errors);
       } else {
-             // $this->Tercero_mod->Carga_Estatal($rutadestino, $_POST['concepto'], $_POST['quincenaProc']);
-      }
+             $campos['imagen1']=$imagen;
         }
+    }
+ $archivos2 = count($_FILES["input_file2"]['name']);   
+     for ($i = 0; $i < $archivos1; $i++) {
+    $imagen=$this->uid().'_'.$_FILES["input_file2"]['name'][$i];
+      $rutadestino =$_SERVER["DOCUMENT_ROOT"].'/admin/assets/dist/productos/'.$imagen;
+  
+
+    if(!@copy($_FILES["input_file2"]['tmp_name'][$i], $rutadestino)) {
+        $errors = error_get_last();
+        print_r($errors);
+      } else {
+        $campos['imagen2']=$imagen;
+      }
+        } 
+
+       $archivos3 = count($_FILES["input_file3"]['name']);   
+     for ($i = 0; $i < $archivos1; $i++) {
+    $imagen=$this->uid().'_'.$_FILES["input_file3"]['name'][$i];
+      $rutadestino =$_SERVER["DOCUMENT_ROOT"].'/admin/assets/dist/productos/'.$imagen;
+  
+
+    if(!@copy($_FILES["input_file3"]['tmp_name'][$i], $rutadestino)) {
+        $errors = error_get_last();
+        print_r($errors);
+      } else {
+           $campos['imagen3']=$imagen;
+      }
+        } 
+
+             $archivos4 = count($_FILES["input_file4"]['name']);   
+     for ($i = 0; $i < $archivos1; $i++) {
+    $imagen=$this->uid().'_'.$_FILES["input_file4"]['name'][$i];
+      $rutadestino =$_SERVER["DOCUMENT_ROOT"].'/admin/assets/dist/productos/'.$imagen;
+  
+
+    if(!@copy($_FILES["input_file4"]['tmp_name'][$i], $rutadestino)) {
+        $errors = error_get_last();
+        print_r($errors);
+      } else {
+        $campos['imagen4']=$imagen;
+      }
+        }       
 
 
-   $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-      
-        $precio = $_POST['precio'];
-        $estatus = $_POST['estatus'];
-        $categoria = $_POST['categoria'];
-       
-
-        $sucursal = $this->user['user']['s_SucursalId'];
- $peso = $_POST['peso'];
-   $sub_categoria = $_POST['sub_categoria'];                      
-        $this->Producto->GuardaProducto($nombre, $descripcion, $precio, $estatus, $categoria, $sucursal,$imagen,$peso,$sub_categoria);
-
-        $respuesta = array(
+        $this->sentencias_genericas->insertar('productos',$campos);
+         $respuesta = array(
             'codigo' => 200,
             'mensaje' => "Guardado"
         );
 
         echo json_encode($respuesta);
+       
+
     }
 
     function getProductos() {

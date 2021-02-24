@@ -13,6 +13,15 @@ class sentencias_genericas extends CI_Model {
         return $id;
      }
 
+     function select_catalogo($tabla){
+        $resultados = $this->db->select('*')
+                      
+                        ->get($tabla)->result();
+
+          return $resultados;              
+
+     }
+
       function modificar($tabla,$campos_set,$campos_where) {
         $this->db->where($campos_where)
         ->set($campos_set)

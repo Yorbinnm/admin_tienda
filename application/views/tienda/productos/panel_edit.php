@@ -1,6 +1,6 @@
 
 
-<section class="invoice   " id="panel_editar"  style="display:nones;"  >
+<section class="invoice   " id="panel_editar"  style="display:none;"  >
       <!-- title row -->
       <div class="row ">
         <div class="col-xs-12 col-md-12 col-lg-12 bg-aquas">
@@ -17,16 +17,16 @@
             
            <div class=" col-sm-4">
               <div class="input-group ">
-                <span class="input-group-addon resalta_span" style=" "><b><i class="fa fa-fw fa-pencil"></i></b></span>
-                <input type="text" class="form-control" id="nombre" placeholder="NOMBRE DEL PRODUCTO">
+                <span class="input-group-addon resalta_span" style=" "><b>TITLE</b></span>
+                <input type="text" class="form-control" id="nombre" >
               </div>
               </div>
 
                  <div class=" col-sm-3">
               <div class="input-group ">
-                <span class="input-group-addon resalta_span" style=" "><b>ESTATUS</b></span>
+                <span class="input-group-addon resalta_span" style=" "><b>STATUS</b></span>
                       <select class="form-control" id='selectstatus'>
-                                        <option value="Seleccione">Seleccione</option>
+                                        <option value="Seleccione">--</option>
                                         <option value="1">Activo</option>
                                         <option value="2">Inactivo</option>
 
@@ -38,19 +38,21 @@
             <div class=" col-sm-2">
             
               <div class="input-group">
-                <span class="input-group-addon resalta_span"><b>PESO</b></span>
-                <input type="text" class="form-control" id="peso" placeholder="PESO ">
+                <span class="input-group-addon resalta_span"><b>WEIGHT</b></span>
+                <input type="text" class="form-control" id="peso" >
               </div>
               <br>
          </div>
              <div class=" col-sm-3">
           
               <div class="input-group">
-                <span class="input-group-addon resalta_span"><b>UNIDAD</b></span>
-              <select class="form-control" id='selectstatus'>
-                        <option value="Seleccione">Seleccione</option>
-                        <option value="1">Activo</option>
-                        <option value="2">Inactivo</option>
+                <span class="input-group-addon resalta_span"><b>UNIT</b></span>
+              <select class="form-control" id='unidades'>
+                        <option value="Seleccione">--</option>
+                  <?php foreach ($unidades as $key => $value) {
+                             
+                              echo '<option value="'. $value->unidad_id. '"> '.$value->descripcion.'</option>';
+                            } ?>
 
                      </select>
               </div>
@@ -60,8 +62,8 @@
             <div class=" col-sm-6">
                
               <div class="input-group">
-                <span class="input-group-addon resalta_span"><b>PESO</b></span>
-                <input type="text" class="form-control"id="precio" placeholder="PRECIO ">
+                <span class="input-group-addon resalta_span"><b>PRICE</b></span>
+                <input type="text" class="form-control"id="precio" >
               </div>
               
          </div>
@@ -69,14 +71,14 @@
                
               <div class="input-group">
                 <span class="input-group-addon resalta_span"><b>STOCK</b></span>
-                <input type="text" class="form-control"id="stock" placeholder="STOCK ">
+                <input type="text" class="form-control"id="stock" >
               </div>
               
          </div>
         <div class=" col-sm-6">
              <br>
               <div class="input-group">
-                <span class="input-group-addon resalta_span"><b>CATEGORIA</b></span>
+                <span class="input-group-addon resalta_span"><b>CATEGORY</b></span>
                  <select class="form-control " id='selectcategoria' style="width: 100%;"> 
 
                   </select> 
@@ -86,7 +88,7 @@
           <div class=" col-sm-6">
              <br>
               <div class="input-group">
-                <span class="input-group-addon resalta_span"><b>SUB CATEGORIA</b></span>
+                <span class="input-group-addon resalta_span"><b>SUB CATEGORY</b></span>
                    <select class="form-control" id='select_sub_categoria'>
                      <option value="0">Seleccione</option> </select>  
               </div>
@@ -117,7 +119,7 @@
                                     </label>
                                     <input type="text" class="form-control input-sm tab_incidencias_ct_modal_aplica_incidencia_botones_archivos_input"  readonly>
                                 </div><br>
-                    <div id="previo" class="border border-primary rounded" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
+                    <div id="previo" class="previos" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
       
     </div>        
 
@@ -136,7 +138,7 @@
                                     </label>
                                     <input type="text" class="form-control input-sm tab_incidencias_ct_modal_aplica_incidencia_botones_archivos_input" readonly>
                                 </div><br>
-                                 <div id="previo2" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
+                                 <div id="previo2" class="previos" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
       
     </div>
 
@@ -155,7 +157,7 @@
                                     </label>
                                     <input type="text" class="form-control input-sm tab_incidencias_ct_modal_aplica_incidencia_botones_archivos_input" readonly>
                                 </div>  <br>
-      <div id="previo3" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
+      <div id="previo3" class="previos" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
       
     </div>
 
@@ -175,7 +177,7 @@
                                     <input type="text" class="form-control input-sm tab_incidencias_ct_modal_aplica_incidencia_botones_archivos_input" readonly>
                                 </div>
                                 <br>
-      <div id="previo4" style=" border: 1px solid #C6C4C4;width:100%;height:150px">
+      <div id="previo4" class="previos"  style=" border: 1px solid #C6C4C4;width:100%;height:150px">
       
     </div>
 
@@ -312,11 +314,43 @@ document.getElementById("input_file4").onchange = function(e) {
   };
 }
 
+   function limpia_productos_guardado(){
+    alert('sdsad');
+            $("#nombre").val('');
+            $("#duracion").val('');
+            $("#precio").val('');
+            //  $('#selecEstatus> option[value="33"]').attr('selected', 'selected');
+
+            $("#cocina").val(0);
+            $("#selecEstatus").val("Seleccione");
+
+            $("#peso").val('');
+            $("#stock").val('');
+             $("#input_file").val('');
+            $("#descripcion").val('');
+              $("#input_file").val('');
+              $("#input_file2").val('');
+              $("#input_file3").val('');
+              $("#input_file4").val('');
+            $("#selectcategoria").val("Seleccione");
+            $(".previos").html("");
+            $('.tab_incidencias_ct_modal_aplica_incidencia_botones_archivos_input').val('');
+        
+            $(".file").val('');
+            
+             $("#selectcategoria").change();
+        }
 
 
     $(document).ready(function () {
 
-    
+  
+
+
+
+
+
+
 
     });
 

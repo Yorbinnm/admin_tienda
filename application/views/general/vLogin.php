@@ -1,3 +1,6 @@
+
+
+
 <head>
     <title>Administrator</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -17,15 +20,15 @@
 </head>
 
 
-
-   <br>   <br>
+<body style="background:#F7F7F7;">
+   <br> 
 
 
 
 
 
      
-        <div class="login-box" style="border: 1.5px solid #6EC2BB; border-radius: 10px;">
+        <div class="login-box col" style=" border-radius: 10px;">
             <div class="login-logo" >   
                 <div class="box box-widget widget-user bg-aqua-success" >    
                     <div class="widget-user-header ">
@@ -34,8 +37,10 @@
                     <div class="widget-user-image ">
                         <img class="img-circle img-responsive " src="<?php echo base_url(); ?>assets/dist/img/LOGOS.JPG" alt="User Avatar">
                     </div>
+
                 </div>
             </div>  
+            <br>
             <div class="login-box-body box box-info">
                 <div class="box-body">
                     <form action="<?php echo base_url(); ?>cLogin/ingresar" method="POST">
@@ -57,3 +62,8 @@
                 </div>
             </div>
         </div>
+    </body>    
+
+
+
+

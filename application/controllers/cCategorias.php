@@ -19,8 +19,8 @@ class cCategorias extends CI_Controller {
             redirect(base_url());
         //Cargar el modelo de la clase
         $this->load->model('Categorias');
-         $this->load->model('mCaja');
-        $this->user['cta'] = $this->mCaja->verCuentas($this->user['user']['s_SucursalId']);
+         //$this->load->model('mCaja');
+       /// $this->user['cta'] = $this->mCaja->verCuentas($this->user['user']['s_SucursalId']);
     }
 
     function index() {

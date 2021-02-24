@@ -92,18 +92,15 @@
                                         <img src="<?php echo base_url(); ?>assets/dist/img/LOGOS.jpg" class="img-circle" alt="User Image" class="img-circle" alt="User Image">
 
                                         <p>
-                                            <?php echo $user['s_Sucursal']; ?><br>
-                                            <?php echo $user['s_Usuario'] . ' ( ' . $user['s_Descripcion'] . ' ) '; ?>
+                                            Administrator
 
                                         </p>
 
                                     </li>          
                                     <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat btnPerfil"><i class="fa fa-user"></i> &nbsp;Perfil</a>
-                                        </div>
+                                        
                                         <div class="pull-right">
-                                            <a href="<?php echo base_url() ?>cLogin/cerrar_sesion" class="cerrar btn btn-default btn-flat"><i class="fa fa-power-off"></i> &nbsp;Cerrar Sesión</a>
+                                            <a href="<?php echo base_url() ?>cLogin/cerrar_sesion" class="cerrar btn btn-default btn-flat"><i class="fa fa-power-off"></i> &nbsp;Sign off</a>
                                               <!--<a href="<?php echo base_url(); ?>" class="cerrar btn btn-default btn-flat"><i class="fa fa-power-off"></i> &nbsp;Cerrar Sesion</a>-->
                                         </div>
                                     </li>
