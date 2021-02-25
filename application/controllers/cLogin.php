@@ -48,7 +48,7 @@ class cLogin extends CI_Controller {
             }
         } else {
             $data['mensaje'] = "Datos erroneos";
-            $this->load->view('lemuria/vLogin', $data);
+            $this->load->view('general/vLogin', $data);
         }
     }
 

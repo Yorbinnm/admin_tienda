@@ -9,16 +9,14 @@ class sentencias_genericas extends CI_Model {
 
     function insertar($tabla,$datos) {
         $this->db->insert($tabla, $datos);
-                $id = $this->db->insert_id();
+        $id = $this->db->insert_id();
         return $id;
      }
 
      function select_catalogo($tabla){
         $resultados = $this->db->select('*')
-                      
-                        ->get($tabla)->result();
-
-          return $resultados;              
+        ->get($tabla)->result();
+        return $resultados;              
 
      }
 
@@ -30,11 +28,9 @@ class sentencias_genericas extends CI_Model {
      }
 
        public function obtener_valores_por_id($tabla,$campo,$id) {
-       
         $resultados = $this->db->select('*')
-                        ->where($campo, $id)
-                        ->get($tabla)->result();
-
+        ->where($campo, $id)
+        ->get($tabla)->result();
         return $resultados;
     }
 

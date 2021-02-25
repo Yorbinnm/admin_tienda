@@ -91,6 +91,21 @@ class Ctr_pruebas extends CI_Controller {
    
    }
 
+     function index() {
+        $this->load->view('formas/home');
+   
+         }
+
+          function shop() {
+        $this->load->view('formas/home');
+   
+         }
+            function contact() {
+        $this->load->view('formas/contact');
+   
+         }
+
+
 
 
 }
